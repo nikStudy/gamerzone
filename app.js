@@ -54,7 +54,7 @@ app.use('/uploads', express.static('uploads'));
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 
-app.use(express.static(__dirname + '/client/dist/')); //Provide static directory for frontend
+app.use(express.static(__dirname + '/public')); //Provide static directory for frontend
 
 // app.use(cookieSession({
 //     maxAge: 24 * 60 * 60 * 1000,
@@ -111,10 +111,10 @@ app.use('/api', stripeRoutes);
 
 // connect server to Angular index.html
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname + '/client/dist/index.html'));
+    res.sendFile(path.join(__dirname + '/public/index.html'));
 });
 
 // listen for requests
 app.listen(process.env.PORT || 8080, () => {
-    console.log('app now listening for requests on port 4000');
+    console.log('app now listening for requests on port 8080');
 });
